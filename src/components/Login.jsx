@@ -4,7 +4,7 @@ import { Form, Button, Row, Col, Container, Card } from "react-bootstrap";
 const Login = (props) => {
   // https://giftr-back.herokuapp.com/ back end link
   const [input, setInput] = useState({
-    username: "",
+    groupName: "",
     password: "",
   });
 
@@ -17,6 +17,7 @@ const Login = (props) => {
     e.preventDefault();
     logIn(input);
   };
+
   // not yet working log in. just threw in skeleton looks like back end needs to be updated to accept a /login route. - jm
   const logIn = async (data) => {
     try {
@@ -27,12 +28,14 @@ const Login = (props) => {
           "Content-Type": "application/json",
         },
       };
-      const loggedIn = await fetch(
-        "https://giftr-back.herokuapp.com/login",
+      const token = await fetch(
+        "https://giftr-back.herokuapp.com/group/login",
         configs
-      ); // check fetch url!!
-      const parsedLogIn = await loggedIn.json();
-      console.log(parsedLogIn);
+      ); 
+      const parsedToken = await token.json();
+      
+      props.setAuthN({groupName: input.groupName, ...parsedToken})
+
     } catch (err) {
       console.log(err);
     }
@@ -52,8 +55,8 @@ const Login = (props) => {
                 <Form.Label>Username:</Form.Label>
                 <Form.Control
                   type="text"
-                  id="username"
-                  name="username"
+                  id="groupName"
+                  name="groupName"
                   onChange={handleChange}
                 />
               </Form.Group>

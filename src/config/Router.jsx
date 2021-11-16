@@ -5,11 +5,12 @@ import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 
 const Router = (props) => {
+  
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="login" element={<Login />} />
+      <Route path="login" element={<Login setAuthN={props.setAuthN} />} />
       <Route path="signup" element={<SignUp />} />
     </Routes>
   );

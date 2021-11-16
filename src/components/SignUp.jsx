@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { Form, Button, Row, Col, Container, Card } from "react-bootstrap";
+
 const SignUp = (props) => {
 /////////////////////////////////
 

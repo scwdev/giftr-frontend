@@ -17,7 +17,7 @@ const Login = (props) => {
     e.preventDefault();
     logIn(input);
   };
-  // not yet working log in. just threw in skeleton. perhaps axios call? I am not familiar. - jm
+  // not yet working log in. just threw in skeleton looks like back end needs to be updated to accept a /login route. - jm
   const logIn = async (data) => {
     try {
       const configs = {

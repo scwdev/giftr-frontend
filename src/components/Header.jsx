@@ -5,21 +5,18 @@ import { Form, Button, Row, Col, Container, Card } from "react-bootstrap";
 const Header = (props) => {
   return (
     <div>
-      <span className="navbar">
-        <Link link to="/login" className="">
-          Login
-        </Link>
-        <Link link to="/signup" className="">
-          Sign Up
-        </Link>
-        <Link link to="/logout" className="">
-          Log Out
-        </Link>
-        <Link link to="/about" className="">
-          About
-        </Link>
-      </span>
+      <div className="header">
+        <span className="inlineheader">
+          <Link to="/login" className="link">Login</Link>
+          &nbsp;&nbsp;
+          <Link to="/signup" className="link">SignUp</Link>
+          &nbsp;&nbsp;
+          <Link to="/logout" className="link">LogOut</Link>
+          &nbsp;&nbsp;
+          <Link to="/about" className="link">About</Link>
+        </span>
     </div>
+  </div>
   );
 };
 export default Header;

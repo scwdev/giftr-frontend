@@ -65,9 +65,12 @@ const Login = (props) => {
                   type="password"
                   onChange={handleChange}
                 />
+                 <br />
               </Form.Group>
               <Form.Control type="submit" />
+              <br />
             </div>
+         
           </Form>
         </Card>
       </Container>

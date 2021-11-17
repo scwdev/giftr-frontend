@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { Form, Button, Row, Col, Container, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   // https://giftr-back.herokuapp.com/ back end link
   const [input, setInput] = useState({
-    username: "",
+    groupName: "",
     password: "",
   });
+
+  let navigate = useNavigate();
 
   const handleChange = (e) => {
     console.log(e.target.name, e.target.value);
@@ -17,7 +20,7 @@ const Login = (props) => {
     e.preventDefault();
     logIn(input);
   };
-  // not yet working log in. just threw in skeleton looks like back end needs to be updated to accept a /login route. - jm
+
   const logIn = async (data) => {
     try {
       const configs = {
@@ -27,12 +30,18 @@ const Login = (props) => {
           "Content-Type": "application/json",
         },
       };
-      const loggedIn = await fetch(
-        "https://giftr-back.herokuapp.com/login",
+      const group = await fetch(
+        "https://giftr-back.herokuapp.com/group/login",
         configs
       ); // check fetch url!!
-      const parsedLogIn = await loggedIn.json();
-      console.log(parsedLogIn);
+      const parsedGroup = await group.json();
+      console.log(parsedGroup);
+      props.setAuthN({ groupName: input.groupName, ...parsedGroup.token });
+      if (parsedGroup) {
+        navigate(`/wishlist/${parsedGroup.group._id}`);
+      } else {
+        navigate(`/login`);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -52,8 +61,8 @@ const Login = (props) => {
                 <Form.Label>Username:</Form.Label>
                 <Form.Control
                   type="text"
-                  id="username"
-                  name="username"
+                  id="groupName"
+                  name="groupName"
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -65,12 +74,11 @@ const Login = (props) => {
                   type="password"
                   onChange={handleChange}
                 />
-                 <br />
+                <br />
               </Form.Group>
               <Form.Control type="submit" />
               <br />
             </div>
-         
           </Form>
         </Card>
       </Container>

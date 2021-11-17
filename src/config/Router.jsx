@@ -6,13 +6,17 @@ import SignUp from "../components/SignUp";
 import List from "../components/List";
 
 const Router = (props) => {
+  //token is stored at props.authN.token
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="login" element={<Login />} />
-      <Route path="signup" element={<SignUp />} />
-      <Route path="wishlist/:id" element={<List />} />
+      <Route path="login" element={<Login setAuthN={props.setAuthN} />} />
+      <Route path="signup" element={<SignUp setAuthN={props.setAuthN} />} />
+      <Route
+        path="wishlist/:id"
+        element={<List setAuthN={props.setAuthN} authN={props.authN} />}
+      />
     </Routes>
   );
 };

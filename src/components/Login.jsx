@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Form, Button, Row, Col, Container, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   // https://giftr-back.herokuapp.com/ back end link
@@ -7,6 +8,8 @@ const Login = (props) => {
     groupName: "",
     password: "",
   });
+
+  let navigate = useNavigate();
 
   const handleChange = (e) => {
     console.log(e.target.name, e.target.value);
@@ -18,7 +21,6 @@ const Login = (props) => {
     logIn(input);
   };
 
-  // not yet working log in. just threw in skeleton looks like back end needs to be updated to accept a /login route. - jm
   const logIn = async (data) => {
     try {
       const configs = {
@@ -28,14 +30,18 @@ const Login = (props) => {
           "Content-Type": "application/json",
         },
       };
-      const token = await fetch(
+      const group = await fetch(
         "https://giftr-back.herokuapp.com/group/login",
         configs
-      ); 
-      const parsedToken = await token.json();
-      
-      props.setAuthN({groupName: input.groupName, ...parsedToken})
-
+      ); // check fetch url!!
+      const parsedGroup = await group.json();
+      console.log(parsedGroup);
+      props.setAuthN({ groupName: input.groupName, ...parsedGroup.token });
+      if (parsedGroup) {
+        navigate(`/wishlist/${parsedGroup.group._id}`);
+      } else {
+        navigate(`/login`);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -68,12 +74,11 @@ const Login = (props) => {
                   type="password"
                   onChange={handleChange}
                 />
-                 <br />
+                <br />
               </Form.Group>
               <Form.Control type="submit" />
               <br />
             </div>
-         
           </Form>
         </Card>
       </Container>

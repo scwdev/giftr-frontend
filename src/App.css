@@ -2,15 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 .App {
-
 }
 .App-logo {
-
 }
-
-
-
-
 .github {
   width: 10%;
   height: 10%;
@@ -19,7 +13,6 @@
   width: 30%;
   height: auto;
 }
-
 .linkedInName {
   font-size: 1em;
   margin: 0;
@@ -36,10 +29,17 @@
    padding: 5px;
    background: #f7f9f7aa;
  }
-
-
+ .inlineheader{
+  display:flex;
+  justify-content: right;
+  margin-right: 2vw;
+}
+.headerlinks{
+  margin-right: 0%;
+  display: flex;
+  justify-items: space-between;
+}
  .link{
-  display:inline-flex;
   color: rgb(49, 85, 28);
   text-decoration:none;
   font-weight:400;
@@ -68,18 +68,12 @@
     .5px -.25px 0 #050,
     -.5px -.25px 0 #050; 
 }
+
+
 /* End Header Styling */
 
 
 /* Homepage Styling */
-.title-line{
-    padding: 1vh;
-    width: 100%;
-    display: flex;
-  justify-content:center;
-    margin: 0 auto;
-
-  }
 .title{
   font-family: 'Righteous', cursive;
   font-size: 10em;
@@ -109,37 +103,52 @@
   .5px -.25px 0 #050,
   -.5px -.25px 0 #050; 
 }
+.title-line{
+    padding: 1vh;
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    margin: 0 auto;
+  }
+  .titleimg{
+    width: 35em;
+    height: 14em;
+  }
 .giftrimg{
-  margin-top: 2em;
-  width: 8em;
-  height: 8em;
+  /* margin-top: 2em; */
+  width: 12em;
+  height: 14em;
 }
 .home-index{
   min-height: 80em;
-  background-color:rgb(215, 244, 222);
   background-size: cover;
+  background-repeat:no-repeat;
 }
 /* End Homepage Styling */
 
 
-
-
 /* Footer Styling */
 .footerlinks{
-  width: 6em;
-  height: 6em;
+  width: 5em;
+  height: 5em;
   margin-bottom: .2em;
 }
-
-.footer1{
+.footer{
   display: inline-flex;
-  justify-items: right;
-  /* font-size: 20px; */
+  float: right;
   color: white;
   padding: 5px;
   background: rgba(251, 252, 252, 0.666);
   position:fixed;
   bottom:0;
-  /* width:100%; */
+  width:100%;
+}
+.inlinefooter{
+  display:flex;
+  justify-content: space-between;
 }
 /* End Footer Styling */
+
+
+
+/* Animated background */

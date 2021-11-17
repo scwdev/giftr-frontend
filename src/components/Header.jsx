@@ -7,14 +7,16 @@ const Header = (props) => {
     <div>
       <div className="header">
         <span className="inlineheader">
-          <Link to="/login" className="link">Login</Link>
-          &nbsp;&nbsp;
-          <Link to="/signup" className="link">SignUp</Link>
-          &nbsp;&nbsp;
-          <Link to="/logout" className="link">LogOut</Link>
-          &nbsp;&nbsp;
-          <Link to="/about" className="link">About</Link>
+          <span className="headerlinks">
+            <Link to="/login" className="link">Login</Link>
+            &nbsp;&nbsp;
+            <Link to="/signup" className="link">SignUp</Link>
+            &nbsp;&nbsp;
+            <Link to="/logout" className="link">LogOut</Link>
+            &nbsp;&nbsp;
+            <Link to="/about" className="link">About</Link>
         </span>
+      </span>
     </div>
   </div>
   );

@@ -8,7 +8,7 @@ const Login = (props) => {
     groupName: "",
     password: "",
   });
-
+  const [id, setId] = useState();
   let navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -35,10 +35,11 @@ const Login = (props) => {
         configs
       ); // check fetch url!!
       const parsedGroup = await group.json();
-      console.log(parsedGroup);
+      console.log(parsedGroup.group._id);
+      setId(parsedGroup.group._id);
       props.setAuthN({ groupName: input.groupName, ...parsedGroup.token });
       if (parsedGroup) {
-        navigate(`/wishlist/${parsedGroup.group._id}`);
+        navigate(`/wishlist/${id}`);
       } else {
         navigate(`/login`);
       }
